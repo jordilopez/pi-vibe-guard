@@ -1,5 +1,7 @@
 # pi-vibe-guard
 
+[![tests](https://github.com/jordilopez/pi-vibe-guard/actions/workflows/test.yml/badge.svg)](https://github.com/jordilopez/pi-vibe-guard/actions/workflows/test.yml)
+
 A Pi extension that scores every prompt with the Jev classifier **before it reaches the model**, and warns you when it reads as loose-spec vibe coding — so you can rephrase first.
 
 ```
@@ -143,8 +145,13 @@ touch the extension only for pi-specific wiring.
 npm test         # unit tests — scoring logic, ~80 ms
 npm run smoke    # integration — extension loads and scores, ~4 s
 npm run check    # both
-npm run format   # prettier
 ```
+
+The project has **zero dependencies**. Tests run on Node's built-in test
+runner, and the extension is a single TypeScript file loaded by pi's
+runtime. There is no build step, no linter, and no lockfile — nothing to
+install before running the tests. `.prettierrc` is kept for editor
+integration; formatting is not part of the gate.
 
 ## Notes
 

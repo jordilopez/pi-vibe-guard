@@ -10,12 +10,14 @@ Pi extension that scores each prompt with the Jev classifier and warns before se
 - npm
 - .nvmrc
 - Environment
-- Prettier
-- ESLint
+- Prettier (`.prettierrc` only — for editor integration, not a declared dep)
 - EditorConfig
 - README
 - AGENTS
-- TypeScript
+
+ESLint and TypeScript configs were removed: no lint script or build step
+used them, and the project has zero dependencies by design. `src/*.ts`
+files run through Node's native type stripping, not `tsc`.
 
 ## Conventions
 
