@@ -1,0 +1,14 @@
+{
+  "name": "pi-vibe-guard",
+  "version": "0.1.0",
+  "description": "Pi extension that scores each prompt with Jev, warns before sending when it reads as loose-spec vibe coding, and shows a cumulative session tally in the status bar.",
+  "license": "MIT",
+  "author": "",
+  "scripts": {
+    "test": "node --test tests/scoring.test.ts",
+    "smoke": "bash scripts/smoke.sh",
+    "check": "npm test && npm run smoke",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  }
+}
