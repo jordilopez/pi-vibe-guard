@@ -4,6 +4,13 @@
   "description": "Pi extension that scores each prompt with Jev, warns before sending when it reads as loose-spec vibe coding, and shows a cumulative session tally in the status bar.",
   "license": "MIT",
   "author": "",
+  "keywords": ["pi-package"],
+  "pi": {
+    "extensions": ["./.pi/extensions/*.ts"]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
   "scripts": {
     "test": "node --test tests/scoring.test.ts",
     "smoke": "bash scripts/smoke.sh",
