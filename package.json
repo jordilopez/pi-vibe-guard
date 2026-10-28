@@ -2,11 +2,12 @@
   "name": "pi-vibe-guard",
   "version": "0.1.0",
   "description": "Pi extension that scores each prompt with Jev, warns before sending when it reads as loose-spec vibe coding, and shows a cumulative session tally in the status bar.",
+  "type": "module",
   "license": "MIT",
   "author": "",
   "keywords": ["pi-package"],
   "pi": {
-    "extensions": ["./.pi/extensions/*.ts"]
+    "extensions": ["./.pi/extensions/vibe-guard.ts"]
   },
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*"
