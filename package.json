@@ -7,8 +7,6 @@
   "scripts": {
     "test": "node --test tests/scoring.test.ts",
     "smoke": "bash scripts/smoke.sh",
-    "check": "npm test && npm run smoke",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "check": "npm test && npm run smoke"
   }
 }

@@ -1,16 +1,15 @@
 name: tests
 
-# Strategy (full design in PR description):
-#   - Branch protection on master requires PR + 0 approvals
-#   - This workflow provides the status check that gates merges
-#   - Smoke (pi -e) intentionally stays out of CI; see PR body
+# The merge gate for master. Branch protection requires the `unit tests`
+# job by name — if you rename the job below, update the required status
+# check too, or master becomes permanently unmergeable.
 on:
   pull_request:
     branches: [master]
   push:
     branches: [master]
 
-# Tight permissions: read source, write nothing. No credentials needed.
+# Read source, write nothing. The suite needs no credentials.
 permissions:
   contents: read
 
@@ -26,16 +25,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Version comes from .nvmrc (24.x), where `node --test` runs .ts
+      # files via native type stripping — no build step and no deps.
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
 
-      # Strip-types is required on node 22 LTS for `node --test *.ts`. The
-      # flag is implicit on >=23, but explicit here keeps the runner from
-      # silently changing behavior when GitHub bumps the default image.
       - name: Run unit tests
-        run: npm test -- --experimental-strip-types
-
-      - name: Verify command-line flags survived
-        # Belt-and-braces: if args got stripped upstream, fail loudly.
-        run: node --test --experimental-strip-types tests/scoring.test.ts
+        run: npm test
